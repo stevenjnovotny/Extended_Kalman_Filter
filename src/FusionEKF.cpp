@@ -37,6 +37,11 @@ FusionEKF::FusionEKF() {
    * TODO: Set the process and measurement noises
    */
 
+  // laser measurement matrix
+  H_laser_ << 1,0,0,0,
+              0,1,0,0;
+
+  // jacobian (for radar) must be set with px, py, vx, vy
 
 }
 
