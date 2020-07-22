@@ -32,6 +32,8 @@ string hasData(string s) {
 int main() {
   uWS::Hub h;
 
+  std::cout << "running..." << std::endl;
+
   // Create a Kalman Filter instance
   FusionEKF fusionEKF;
 
@@ -46,6 +48,9 @@ int main() {
     // "42" at the start of the message means there's a websocket message event.
     // The 4 signifies a websocket message
     // The 2 signifies a websocket event
+
+    std::cout << "onMessage" << std::endl;
+
     if (length && length > 2 && data[0] == '4' && data[1] == '2') {
       auto s = hasData(string(data));
 
