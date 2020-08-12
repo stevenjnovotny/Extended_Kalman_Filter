@@ -51,6 +51,10 @@ FusionEKF::FusionEKF() {
    */
   
   ekf_.F_ = MatrixXd(4,4);
+  ekf_.F_ << 1,0,1,0,
+    	     0,1,0,1,
+    		 0,0,1,0,
+    		 0,0,0,1;  
   ekf_.Q_ = MatrixXd(4,4);  
   ekf_.P_ = MatrixXd(4,4);
   ekf_.P_ << 0,0,0,0,
@@ -103,7 +107,7 @@ void FusionEKF::ProcessMeasurement(const MeasurementPackage &measurement_pack) {
       }
       //cout << phi << endl;      
       double rho = measurement_pack.raw_measurements_[0];
-      ekf_.x_ << rho* cos(phi),
+      ekf_.x_ << rho * cos(phi),
                  rho * sin(phi),
                  0,
                  0;  
@@ -130,11 +134,8 @@ void FusionEKF::ProcessMeasurement(const MeasurementPackage &measurement_pack) {
     
     // done initializing, no need to predict or update
     is_initialized_ = true;
+
     
-    ekf_.F_ << 	1,0,1,0,
-    			0,1,0,1,
-    			0,0,1,0,
-    			0,0,0,1;
     return;
   }
 
@@ -159,11 +160,9 @@ void FusionEKF::ProcessMeasurement(const MeasurementPackage &measurement_pack) {
   // modify F matrix with new time for prediction step
   // x' = F*x
   // P' = F*P*F_T + Q
-
-  ekf_.F_ << 1,0,dt,0,
-  			 0,1,0,dt,
-  			 0,0,1,0,
-  			 0,0,0,1;
+  
+  ekf_.F_(0,2) = dt;
+  ekf_.F_(1,3) = dt;
 
   //cout << "F updated" << endl;
   
