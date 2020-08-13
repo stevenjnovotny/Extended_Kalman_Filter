@@ -16,10 +16,10 @@ Once the install for uWebSocketIO is complete, the main program can be built and
 
 [//]: # (Image References)
 
-[image1]: ./KFflow.jpg "Kalman Filter Flow"
-[image2]: ./KF.jpg "Kalman Filter"
-[image3]: ./EKF.jpg "Extended Kalman Filter"
-[image4]: ./Ekf_simulation1.jpg "Extended Kalman Filter"
+[image1]: ./KFflow.JPG "Kalman Filter Flow"
+[image2]: ./KF.JPG "Kalman Filter"
+[image3]: ./EKF.JPG "Extended Kalman Filter"
+[image4]: ./Ekf_simulation_1.png "Extended Kalman Filter"
 
 ## Code Overview
 
